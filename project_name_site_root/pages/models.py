@@ -45,11 +45,11 @@ class Server(models.Model):
         
 
         # if local - so i want to connect directly to the ip and port of esp
-        # mysock.connect( ("192.168.43.240", 1025) )
+        mysock.connect( ("192.168.43.240", 1025) )
 
         # if not local - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot
         # but it does not must be also 1025 
-        mysock.connect( ("188.64.207.172", 1025) )
+        # mysock.connect( ("188.64.207.172", 1025) )
 
         # note - must be the same as in esp code: 
         # mysock.connect( ("192.168.43.240", 80) )

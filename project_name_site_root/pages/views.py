@@ -8,7 +8,7 @@ from . models import Home
 from . models import Helicopter
 
 # global variables
-PRODUCTION = False
+PRODUCTION = True
 
 # Create your views here.
 
