@@ -25,7 +25,7 @@ SECRET_KEY = 'a7hcbluo0*t0dccqz$#g&mj$!=x3)1i^t5r4dod=#33f5*o^w_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['genam.pythonanywhere.com']
 
 
 # Application definition
