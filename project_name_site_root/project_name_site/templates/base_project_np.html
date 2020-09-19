@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <title>server</title>
+  <link rel="stylesheet" href="static/np_css/nicepage.css" media="screen">
+  <link href="static/base_project_np.css" rel="stylesheet" type="text/css">
+
+
+  {% block up_proj_pic %}
+
+
+  {% endblock up_proj_pic %}
+
+  <script class="u-script" type="text/javascript" src="static/np_js/jquery.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="static/np_js/nicepage.js" defer=""></script>
+
+  <meta name="generator" content="Nicepage 2.23.0, nicepage.com">
+
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">
+        {
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "personal_website",
+		"url": "index.html"
+        }
+    </script>
+  <meta property="og:title" content="server">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#478ac9">
+  <link rel="canonical" href="index.html">
+  <meta property="og:url" content="index.html">
+</head>
+
+<body class="u-body u-overlap">
+  <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-d315">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout" style="">
+          <div class="u-layout-row" style="">
+            <div
+              class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-size-39 u-size-xs-60 u-image-1"
+              src="" data-image-width="1280" data-image-height="743">
+              <div class="u-container-layout u-valign-middle u-container-layout-1" src=""></div>
+            </div>
+            <div
+              class="u-align-left u-container-style u-layout-cell u-palette-1-base u-right-cell u-size-21 u-size-xs-60 u-layout-cell-2">
+              <div class="u-container-layout u-container-layout-2">
+                <h2 class="u-text u-text-white u-text-1">
+                  <a href="https://app.desktop.nicepage.com/" c=""
+                    class="u-btn u-button-style u-none u-text-white u-btn-1">Remote Server based on microcontroller</a>
+                </h2>
+                {% block cover_title %}
+
+                {% endblock cover_title %}
+                <a href="#sec-2261"
+                  class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-2">learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="u-align-left u-clearfix u-grey-10 u-section-2" id="sec-2261">
+    <div
+      class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1">
+      <div class="u-border-2 u-border-palette-5-dark-1 u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+        <style></style>
+        {% block general_project_info %}
+
+        <!-- <style> section { padding: 10px } </style> -->
+        <section class="needpad">
+          <h1> Project - {{ project.project_name }} </h1>
+          {% autoescape off %}
+          <h2> Description <br> </h2>
+          <p></p>{{ project.description }} </p>
+          <h2> Functionality </h2>
+          <ul> {{ project.functionality }} </ul>
+          <h2> Limitations </h2>
+          <ul> {{ project.limitation }} </ul>
+          {% endautoescape %}
+        </section> <br>
+
+        {% endblock general_project_info %}
+
+        {% block mid_proj_pic %}
+
+        {% endblock mid_proj_pic %}
+
+        {% block content %}
+        <p>Here should be your specific project content</p>
+        {% endblock content %}
+
+        {% block foot %}
+        <hr>
+        <!-- <footer style = "color: white;padding: 7px ;background-color: rgb(85, 86, 92);"> -->
+        <footer>
+
+          <p> Last update:{{ project.last_updated }} </p>
+</body>
+
+{% endblock foot %}
+
+</div>
+
+
+</div>
+</section>
+
+</html>

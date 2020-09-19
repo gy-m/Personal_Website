@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Projects
+    </title>
+    <!-- <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css"> -->
+    <link href="{% static 'base_project.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <section id="content">
+        
+            <!-- <link href="static/server.css" rel="stylesheet" type="text/css"> -->
+
+            {% block general_project_info %}
+                <h1> Project - {{ project.project_name }} </h1>
+                {% autoescape off %}
+                    <h2> Description <br> </h2> <p></p>{{ project.description }} </p>
+                    <h2> Functionality </h2> <ul> {{ project.functionality }} </ul>
+                {% endautoescape %}
+                <br>
+            {% endblock general_project_info %}
+
+
+        {% block content %}
+            <p>This is the site template content section for project (base_project.html)</p>
+        {% endblock content %}
+
+        {% block foot %}
+            <hr >
+            <!-- <footer style = "color: white;padding: 7px ;background-color: rgb(85, 86, 92);"> -->
+            <footer >
+
+                <p> Last update:{{ project.last_updated }} </p>
+            </body>
+      
+        {% endblock foot %}
+    </section>
+</body>
+
+</html>

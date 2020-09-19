@@ -1,0 +1,16 @@
+{% extends "base_project.html" %}
+
+{% block content %}
+
+    <h2> Control Panel - Helicopter </h2>
+        <form action=page_helicopter method="POST">
+            {% csrf_token %}
+            
+            <button type="submit" name = "up" value = "up">UP</button> <br>
+            <button type="submit" name = "down" value = "down">DOWN</button> <br>
+            <button type="submit" name = "land" value = "land">LAND</button> <br>
+            <button type="submit" name = "right" value = "right">RIGHT</button> <br>
+            <button type="submit" name = "left" value = "left">LEFT</button> <br>
+        </form>
+
+{% endblock content %}

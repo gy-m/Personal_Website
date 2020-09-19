@@ -1,0 +1,72 @@
+{% extends "base_project_np.html" %}
+
+{% block up_proj_pic %}
+
+    <style>
+        .u-section-1 .u-image-1 {min-height: 566px; pointer-events: auto; background-image: url("../../../static/np_imgs/img_server.jpg"); background-position: 50% 50%}
+    </style>
+
+{% endblock up_proj_pic %}
+
+{% block cover_title %}
+    <p class="u-text u-text-2">Demonstration how can a small microcontroller use as a WEB server and communicate with a client</p>
+{% endblock cover_title %}
+
+
+{% block mid_proj_pic %}
+    <img src="../../../static/np_imgs/mid_prj_server.jpg" alt="" class="u-expanded-width u-image u-image-default u-image-1" data-image-width="1280" data-image-height="853">
+{% endblock mid_proj_pic %}
+
+
+{% block content %}
+<!-- <style> section { padding: 10px } </style> -->
+<section class = "needpad">
+    <hr>
+    <h2> Control Panel - CLI </h2>
+        <form action=page_server method="POST">
+            {% csrf_token %}
+
+            <input type="text" class='input-button' name="msg_to_server" placeholder="Enter command">
+            <input type="submit" value = "send"> <br>
+            <label>Server: <br></label> <input disabled id = "result" type="text" name="fname" value = "{{server.msg_from_server }}"> <br><br>
+        </form>
+        <br>
+    <hr>
+    <h2> Control Panel - Sensors </h2>
+        <form action=page_server method="POST">
+            {% csrf_token %} <br>
+            
+            <h3> Toggle elements </h3>
+
+            <!-- this section should be deleted and replaced with the 2 inputs below because now there is no logic of naming ("led_1" is not suppose to be named "LED") -->
+            <input type="checkbox" name="led_1_toggle" {% if sensors.led_1 %} checked {% endif %}> 
+            <label for="led_1"> LED </label> <br>
+
+            <!-- <input type="checkbox" name="led_1_toggle" {% if sensors.led_1 %} checked {% endif %}> 
+            <label for="led_1"> led 1</label> <br>
+
+            <input type="checkbox" name="led_2_toggle" {% if sensors.led_2 %} checked {% endif %}>
+            <label for="led_2">  led 2</label> <br><br>            -->
+
+            <h3> Get elements readings </h3>
+            <input type="checkbox" name="get_sonar_reading">
+            <label for="sonar_reading"> get sonar reading <br></label> <input disabled id = "result" type="text" value = {{sensors.sonar_reading}}> <br>
+
+            <input type="checkbox" name="get_gps_reading" disabled>
+            <label for="gps_reading"> get gps reading <br></label><input disabled id = "result" type="text" value = {{sensors.gps_reading}}> <br>
+
+            <!-- <input type="checkbox" name="get_ir_reading">
+            <label for="ir_reading"> get ir reading <br></label> <input disabled id = "result" type="text" value = {{sensors.ir_reading}}> <br> -->
+
+            <input type="checkbox" name="get_gyro_reading" disabled>
+            <label for="gyro_reading"> get gyro reading <br></label> <input disabled id = "result" type="text" value = {{sensors.gyro_reading}}> <br> <br>
+            
+            <h3> Send data to elements </h3>
+
+            <label for="msg_lcd"> send message to LCD <br></label> <input type="text" class='input-button' name="msg_lcd" placeholder="Enter message to LCD"> <br> <br>
+            <label for="msg_ir"> send code to IR <br></label> <input type="text" class='input-button' name="msg_ir" placeholder="Enter code for IR" disabled> <br> <br> <br>
+
+            <input type="submit" value = "Submit"> <br><br>
+        </form>
+</section>
+{% endblock content %}

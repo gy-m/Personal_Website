@@ -1,0 +1,25 @@
+{% extends "base_simple.html" %}
+
+
+{% block nav %}
+  <br><br>
+  Table of Contents - Pages:
+  {% for page in pages.page_list %}
+    <li>
+      <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </li>
+  {% endfor %}
+  <br><br>
+ 
+  Table of Contents - Projects:
+  {% for project in pages.project_list %}
+    <li>
+      <a href="{{ project.permalink }}">{{ project.project_name }}</a>
+    </li>
+  {% endfor %}
+
+  <br><br>
+{% endblock nav %}
+
+
+

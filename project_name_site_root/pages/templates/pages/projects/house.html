@@ -1,0 +1,37 @@
+{% extends "base_project_np.html" %}
+
+{% block up_proj_pic %}
+
+    <style>
+        .u-section-1 .u-image-1 {min-height: 566px; pointer-events: auto; background-image: url("../../../static/np_imgs/img_house_1.png"); background-position: 50% 50%}
+    </style>
+
+{% endblock up_proj_pic %}
+
+{% block cover_title %}
+    <p class="u-text u-text-2">This project takes the previous one (Remote Server) one step ahead, with the ability to control various elements connected to the microcontroller</p>
+{% endblock cover_title %}
+
+{% block mid_proj_pic %}
+    <img src="../../../static/np_imgs/mid_prj_house_2.jpg" alt="" class="u-expanded-width u-image u-image-default u-image" data-image-width="1280" data-image-height="853">
+{% endblock mid_proj_pic %}
+
+{% block content %}
+<section class = "needpad">
+
+    <h2> Control Panel - controllable elements </h2>
+        <form action=page_house method="POST">
+            {% csrf_token %}
+
+            <h3> Toggle elements </h3>
+            <input type="checkbox" name="ac_toggle" {% if home.ac %} checked {% endif %}> 
+            <label for="ac_toggle"> AC</label> <br>
+
+            <input type="checkbox" name="irobot_toggle" {% if home.irobot %} unchecked {% endif %} disabled>
+            <label for="irobot_toggle">  IROBOT </label> <br><br>           
+
+            <input type="submit" value = "Submit"> <br><br>
+        </form>
+</section>
+
+{% endblock content %}

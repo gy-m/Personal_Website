@@ -1,0 +1,14 @@
+{% extends "base_simple.html" %}
+
+{% block content %}
+    {% autoescape off %}
+        <form action=receive method="POST">
+            {% csrf_token %}
+            <input type="text" class='input-button' name="msg" placeholder="Enter message here">
+            <input type="submit">
+        </form>
+
+        <br>
+        Your message recent message the server received: {{msg_received}}
+    {% endautoescape %}
+{% endblock content %}
