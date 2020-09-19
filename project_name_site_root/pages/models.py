@@ -43,25 +43,27 @@ class Server(models.Model):
     def send(self):
         mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         
-
         # if local - so i want to connect directly to the ip and port of esp
-        mysock.connect( ("192.168.43.240", 1025) )
+        # mysock.connect( ("192.168.43.240", 1025) )
 
         # if not local - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot
         # but it does not must be also 1025 
         # mysock.connect( ("188.64.207.172", 1025) )
-
+        mysock.connect( ("proxy73.rt3.io", 37644) )     #  http://proxy73.rt3.io:37644
+       
+        # dynamic ip
         # note - must be the same as in esp code: 
         # mysock.connect( ("192.168.43.240", 80) )
-
-
 
         # if i am using ngrok (even if we configured port 301 in the esp, we will connect to the port we gor grom ngrok, where 80 is the default):
         # mysock.connect( ("b836b6bb8a15.ngrok.io", 80))
 
-        # cmd = ('GET 192.168.43.240/sensors_status.txt HTTP/1.0 \r\n' +  self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
-        # cmd = ('GET 192.168.43.240/sensors_status.txt HTTP/1.0 \r\n' +  'password: a' + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
-        cmd = ('POST 192.168.43.240 HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+        # local network
+        # cmd = ('POST 192.168.43.240 HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+        
+        cmd = ('POST proxy73.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+
+        
         # cmd = ('POST b836b6bb8a15.ngrok.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
 
