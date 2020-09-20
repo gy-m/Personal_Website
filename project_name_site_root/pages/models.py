@@ -3,6 +3,7 @@ import socket
 import time
 
 PASSWORD_ESP = 'abc'
+PWD_ESP = 'abc'
 
 # Create your models here.
 
@@ -42,39 +43,44 @@ class Server(models.Model):
     # todo: configure after the check
     def send(self):
         mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        
+
+        # ////////////////// connections
+        # coursera
+        # mysock.connect( ("data.pr4e.org", 80) )
+
         # if local - so i want to connect directly to the ip and port of esp
         # mysock.connect( ("192.168.43.240", 1025) )
 
-        # if not local - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot
-        # but it does not must be also 1025 
+        # if not local (dynamic) - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot. but it does not must be also 1025 
         # mysock.connect( ("188.64.207.172", 1025) )
-        mysock.connect( ("proxy71.rt3.io", 30397) )     
-    
-        # dynamic ip
-        # note - must be the same as in esp code: 
-        # mysock.connect( ("192.168.43.240", 80) )
 
-        # if i am using ngrok (even if we configured port 301 in the esp, we will connect to the port we gor grom ngrok, where 80 is the default):
+        # if i am using ngrok service (even if we configured port 301 in the esp, we will connect to the port we got from ngrok, where 80 is the default):
         # mysock.connect( ("b836b6bb8a15.ngrok.io", 80))
 
-        # local network
+        # if i am using trmote.it service and got from them the address to esp, which will be accessible from the internet
+        mysock.connect( ("proxy71.rt3.io", 30399) )     
+
+
+        # ////////////////// commands
+        # coursera
+        # cmd = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n'.encode()
+
+        # local network - the ip is the local esp ip
         # cmd = ('POST 192.168.43.240 HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
         
-        cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
-
-        
+        # if not local network - the address we got from ngrok service
         # cmd = ('POST b836b6bb8a15.ngrok.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
+        # if not local network - the address we got from remote.it service
+        # cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
+        # if not local network - the address we got from remote.it service (no password)
+        cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'p: ' + PWD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
-        # cmd = 'GET 192.168.43.240/sensors_status.txt HTTP/1.0\r\n\r\n'.encode()
-        # mysock.connect( ("data.pr4e.org", 80) )
-        # cmd = 'GET http://data.pr4e.org/intro-short.txt HTTP/1.0\r\n\r\n'.encode()
-        
+    # ////////////////// sending commands
+
         mysock.send(cmd)
         # mysock.send('Hello'.encode())
-
 
         # ack to the sent message
         self.msg_from_server = ""       # init
