@@ -84,15 +84,19 @@ class Server(models.Model):
 
         # ack to the sent message
         self.msg_from_server = ""       # init
-        while True:
-            frame = mysock.recv(9600)
-            if len(frame) < 1:
-                break
-            # print("msg from the server: " + ' ' + str(frame.decode()), end='')
-            # print("msg from the server: " + ' ' + str(frame.decode()), end='')
-            self.msg_from_server = str(self.msg_from_server) + '\n' + str(frame.decode())
-            # self.msg_from_server = str(self.msg_from_server)
-        print("msg from the server: " + self.msg_from_server)
+        try:
+            while True:
+                frame = mysock.recv(9600)
+                if len(frame) < 1:
+                    break
+                # print("msg from the server: " + ' ' + str(frame.decode()), end='')
+                # print("msg from the server: " + ' ' + str(frame.decode()), end='')
+                self.msg_from_server = str(self.msg_from_server) + '\n' + str(frame.decode())
+                # self.msg_from_server = str(self.msg_from_server)            
+            print("msg from the server: " + self.msg_from_server)
+        except:
+            self.msg_from_server = "The server got your message but could not send respond due to security issues working on non local network"
+            print("msg from the server: " + self.msg_from_server)
 
 
 class Sensors_Set(models.Model):
