@@ -58,7 +58,8 @@ class Server(models.Model):
         # mysock.connect( ("b836b6bb8a15.ngrok.io", 80))
 
         # if i am using trmote.it service and got from them the address to esp, which will be accessible from the internet
-        mysock.connect( ("proxy71.rt3.io", 30399) )     
+        # mysock.connect( ("proxy71.rt3.io", 30399) )
+        mysock.connect( ("proxy72.rt3.io", 31199) )   
 
 
         # ////////////////// commands
@@ -75,7 +76,7 @@ class Server(models.Model):
         # cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
         # if not local network - the address we got from remote.it service (no password)
-        cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'p: ' + PWD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+        cmd = ('POST proxy72.rt3.io HTTP/1.1 \r\n' +  'p: ' + PWD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
     # ////////////////// sending commands
 
