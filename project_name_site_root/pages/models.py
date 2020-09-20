@@ -76,13 +76,29 @@ class Server(models.Model):
         # cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
         # if not local network - the address we got from remote.it service (no password)
-        cmd = ('POST proxy72.rt3.io HTTP/1.1 \r\n' +  'p: ' + PWD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+        cmd = ('GET proxy72.rt3.io HTTP/1.1 \r\n' +  'p: ' + PWD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
     # ////////////////// sending commands
 
         mysock.send(cmd)
         # mysock.send('Hello'.encode())
 
+    # ////////////////// getting data
+
+
+        # ack to the sent message
+        self.msg_from_server = ""       # init
+        while True:
+            frame = mysock.recv(9600)
+            if len(frame) < 1:
+                break
+            # print("msg from the server: " + ' ' + str(frame.decode()), end='')
+            # print("msg from the server: " + ' ' + str(frame.decode()), end='')
+            self.msg_from_server = str(self.msg_from_server) + '\n' + str(frame.decode())
+            # self.msg_from_server = str(self.msg_from_server)            
+        print("msg from the server: " + self.msg_from_server)
+
+"""
         # ack to the sent message
         self.msg_from_server = ""       # init
         try:
@@ -98,7 +114,7 @@ class Server(models.Model):
         except:
             self.msg_from_server = "The server got your message but could not send respond due to security issues working on non local network"
             print("msg from the server: " + self.msg_from_server)
-
+"""
 
 class Sensors_Set(models.Model):
     sensors_name = models.CharField(max_length=64, unique=True)
