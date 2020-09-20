@@ -49,8 +49,8 @@ class Server(models.Model):
         # if not local - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot
         # but it does not must be also 1025 
         # mysock.connect( ("188.64.207.172", 1025) )
-        mysock.connect( ("proxy72.rt3.io", 31149) )     #  http://proxy73.rt3.io:37644
-       
+        mysock.connect( ("proxy71.rt3.io", 30397) )     
+    
         # dynamic ip
         # note - must be the same as in esp code: 
         # mysock.connect( ("192.168.43.240", 80) )
@@ -61,7 +61,7 @@ class Server(models.Model):
         # local network
         # cmd = ('POST 192.168.43.240 HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
         
-        cmd = ('POST proxy73.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
+        cmd = ('POST proxy71.rt3.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
 
         
         # cmd = ('POST b836b6bb8a15.ngrok.io HTTP/1.1 \r\n' +  'password: ' + PASSWORD_ESP + '\n' + self.msg_to_server + '\n' + 'end' + '\r\n\r\n').encode()
