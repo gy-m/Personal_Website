@@ -60,10 +60,10 @@ class Server(models.Model):
             # mysock.connect( ("bea8dae8846a.ngrok.io", 80))
 
             # if i am using trmote.it service and got from them the address to esp, which will be accessible from the internet
-            remoteit_addr = 'proxy71.rt3.io'
+            remoteit_addr = 'proxy71.rt3.io:'
             # remoteit_addr.lstrip('http://')
             # remoteit_addr.rstrip(':')
-            remoteit_port = 30431
+            remoteit_port = 30432
             mysock.connect( (remoteit_addr, remoteit_port) )   
 
 
