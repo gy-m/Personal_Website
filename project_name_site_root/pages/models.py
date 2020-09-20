@@ -54,16 +54,16 @@ class Server(models.Model):
             # mysock.connect( ("192.168.43.240", 1025) )
 
             # if not local (dynamic) - so i want to connect to the dynamic ip which i discovered "using what is my ip", and i will defin that it will be port 1025 in my hot spot. but it does not must be also 1025 
-            # mysock.connect( ("188.64.207.172", 1025) )
+            # mysock.connect( ("188.64.206.136", 1025) )
 
             # if i am using ngrok service (even if we configured port 301 in the esp, we will connect to the port we got from ngrok, where 80 is the default):
             # mysock.connect( ("bea8dae8846a.ngrok.io", 80))
 
             # if i am using trmote.it service and got from them the address to esp, which will be accessible from the internet
-            remoteit_addr = 'proxy71.rt3.io:'
+            remoteit_addr = 'proxy73.rt3.io'
             # remoteit_addr.lstrip('http://')
             # remoteit_addr.rstrip(':')
-            remoteit_port = 30432
+            remoteit_port = 37693
             mysock.connect( (remoteit_addr, remoteit_port) )   
 
 
